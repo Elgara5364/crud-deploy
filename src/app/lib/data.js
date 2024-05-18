@@ -5,7 +5,7 @@ const ITEMS_PER_PAGE = 5; //jumlah item di setiap halaman
 export const getContacts = async (query, currentPage) => {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   //fungsi utk dapatkan semua contact utk ditampilkan di halaman contact
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
   try {
     const contacts = await prisma.contact.findMany({
       skip: offset,
