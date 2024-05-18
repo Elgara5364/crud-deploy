@@ -2,8 +2,9 @@ import { getContacts } from "../lib/data";
 import { formatDate } from "../lib/utils";
 import { DeleteButton, EditButton } from "./button";
 
-const ContactTable = async () => {
-  const contacts = await getContacts();
+//*Masukkan nilai props menjadi variable untuk mendapatkan kontak.
+const ContactTable = async ({ query, currentPage }) => {
+  const contacts = await getContacts(query, currentPage);
 
   return (
     <table className="w-full text-sm text-left text-gray-500">
@@ -26,8 +27,9 @@ const ContactTable = async () => {
               {formatDate(contact.createdAt.toString())}
             </td>
             <td className="flex space-x-1 justify-center py-3">
-              <EditButton />
-              <DeleteButton />
+              {/* props id akan diteruskan ke button edit */}
+              <EditButton id={contact.id} />
+              <DeleteButton id={contact.id} />
             </td>
           </tr>
         ))}
